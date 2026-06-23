@@ -9,8 +9,8 @@ import * as random from 'maath/random/dist/maath-random.esm';
 function Starfield(props: any) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const ref = useRef<any>(null);
-  // Generate random points in a sphere
-  const sphere = useMemo(() => random.inSphere(new Float32Array(5000), { radius: 1.5 }), []);
+  // Generate random points in a sphere (stride 3 means array size must be multiple of 3)
+  const sphere = useMemo(() => random.inSphere(new Float32Array(15000), { radius: 1.5 }), []);
 
   useFrame((state, delta) => {
     if (ref.current) {

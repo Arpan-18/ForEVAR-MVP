@@ -1,4 +1,23 @@
 import React from 'react';
+import Image from 'next/image';
+
+const founders = [
+  { name: 'Anoushka Polukonda', role: 'CEO', image: '/team/Anoushka_about.png' },
+  { name: 'Arpan Mondal', role: 'Chief of Technology', image: '/team/Arpan_about.png' },
+  { name: 'Sounak Saha', role: 'Chief of Operations', image: '/team/Sounak_about.png' },
+  { name: 'Soumadip Sarkar', role: 'Chief of Marketing', image: '/team/Soumadip_about.jpg' },
+  { name: 'Rajkumar Daniel', role: 'Public Relations', image: '/team/Daniel_about.jpg' },
+  { name: 'Neha Siddiqui', role: 'Environmental Strategy', image: '/team/Neha_about.jpg' },
+  { name: 'Samriddhi Khanna', role: 'Chief of Design', image: '/team/Samridhi_about.png' },
+];
+
+const advisors = [
+  { name: 'Saket Kumar', role: 'Founder Of BarterWater', image: '/team/Saket_about.png' },
+  { name: 'Ramesh Kumar Nibhoria', role: 'Managing Director of NISHANT BIOENERGY PRIVATE LIMITED', image: '/team/RameshKrNibhoria.jpg' },
+  { name: 'Nitant Mate', role: 'Managing Director at SeaGreen', image: '/team/NitantMate.jpg' },
+  { name: 'Prof. Aurobinda Routray', role: 'Prof at IIT Kharagpur', image: '/team/AurobindaRoutray_.jpg' },
+  { name: 'Prof. Brajesh kr Dubey', role: 'Prof at IIT Kharagpur', image: '/team/BrajeshKrDubey.jpg' },
+];
 
 export default function AboutPage() {
   return (
@@ -43,13 +62,19 @@ export default function AboutPage() {
       </section>
 
       <section className="py-20 bg-secondary-bg border-y border-border-subtle">
-        <div className="container mx-auto px-6 max-w-5xl">
+        <div className="container mx-auto px-6 max-w-6xl">
           <h2 className="text-3xl md:text-4xl font-heading font-bold mb-12 text-center">Leadership Team</h2>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            <TeamCard name="Aarav Sharma" role="Chief Executive Officer" expertise="Scaling deep-tech hardware & infrastructure." />
-            <TeamCard name="Priya Patel" role="Chief Technology Officer" expertise="Computer vision architecture & edge AI systems." />
-            <TeamCard name="Rohan Desai" role="Head of Circular Economy" expertise="EPR frameworks & sustainability markets." />
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-24">
+            {founders.map((founder, i) => (
+              <TeamCard key={i} name={founder.name} role={founder.role} image={founder.image} />
+            ))}
+          </div>
+
+          <h2 className="text-3xl md:text-4xl font-heading font-bold mb-12 text-center">Our Advisors</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {advisors.map((advisor, i) => (
+              <TeamCard key={i} name={advisor.name} role={advisor.role} image={advisor.image} />
+            ))}
           </div>
         </div>
       </section>
@@ -57,13 +82,19 @@ export default function AboutPage() {
   );
 }
 
-function TeamCard({ name, role, expertise }: { name: string, role: string, expertise: string }) {
+function TeamCard({ name, role, image }: { name: string, role: string, image: string }) {
   return (
-    <div className="glass-panel p-6 glow-hover text-left flex flex-col h-full">
-      <div className="w-16 h-16 bg-primary-bg rounded-full border border-border-subtle mb-4"></div>
-      <h3 className="text-xl font-heading font-bold text-white mb-1">{name}</h3>
-      <div className="text-accent-primary text-sm font-medium mb-4">{role}</div>
-      <p className="text-text-secondary text-sm">{expertise}</p>
+    <div className="glass-panel p-6 glow-hover text-center flex flex-col h-full items-center">
+      <div className="w-24 h-24 rounded-full border border-border-subtle mb-4 overflow-hidden relative bg-primary-bg">
+        <Image 
+          src={image} 
+          alt={name} 
+          fill
+          className="object-cover"
+        />
+      </div>
+      <h3 className="text-lg font-heading font-bold text-white mb-1">{name}</h3>
+      <div className="text-accent-primary text-sm font-medium">{role}</div>
     </div>
   );
 }

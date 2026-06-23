@@ -40,7 +40,8 @@ export default function Navbar() {
       )}
     >
       <div className="container mx-auto px-6 max-w-7xl flex items-center justify-between">
-        <Link href="/" className="flex items-center space-x-2 z-50">
+        <Link href="/" className="flex items-center space-x-3 z-50">
+          <img src="/logos/logo_biogas2.png" alt="ForEVAR Logo" className="w-8 h-8 object-contain" />
           <span className="font-heading font-bold text-2xl tracking-tighter text-white">
             For<span className="text-accent-primary">EVAR</span>
           </span>

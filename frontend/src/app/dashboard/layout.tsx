@@ -38,8 +38,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         `}>
           <div className="h-20 flex items-center px-6 border-b border-border-subtle">
             <Link href="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-accent-primary rounded flex items-center justify-center">
-                <Leaf className="w-5 h-5 text-primary-bg" />
+              <div className="w-8 h-8 rounded flex items-center justify-center bg-primary-bg overflow-hidden border border-border-subtle">
+                <img src="/logos/logo_biogas2.png" alt="ForEVAR" className="w-full h-full object-contain" />
               </div>
               <span className="font-heading font-bold text-xl tracking-tight">ForEVAR Hub</span>
             </Link>
