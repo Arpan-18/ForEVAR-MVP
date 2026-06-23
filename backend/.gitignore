@@ -1,0 +1,21 @@
+# Environments
+venv/
+env/
+.env
+
+# Byte-compiled
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Database
+*.db
+*.sqlite3
+
+# Logs
+*.log
+
+# Editor
+.vscode/
+.idea/
+.DS_Store

@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary-bg: #050505;
+  --color-secondary-bg: #111111;
+  --color-card-bg: #161616;
+  --color-text-primary: #F5F5F5;
+  --color-text-secondary: rgba(245, 245, 245, 0.7);
+  --color-accent-primary: #7CFF4F;
+  --color-accent-secondary: #00C853;
+  --color-border-subtle: rgba(255, 255, 255, 0.08);
+  --color-glow: rgba(124, 255, 79, 0.25);
+
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-primary-bg text-text-primary font-body antialiased selection:bg-accent-primary selection:text-primary-bg;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading tracking-tight;
+  }
+}
+
+/* Custom Utilities */
+@layer utilities {
+  .glass-panel {
+    @apply bg-card-bg border border-border-subtle backdrop-blur-md rounded-2xl;
+  }
+  
+  .glow-hover {
+    @apply transition-all duration-300 hover:shadow-[0_0_20px_var(--color-glow)] hover:border-accent-primary/30;
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-text-primary to-text-secondary;
+  }
+}
