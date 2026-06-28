@@ -26,17 +26,17 @@ export default function Navbar() {
   const navLinks = [
     { name: 'Technology', href: '/technology' },
     { name: 'Marketplace', href: '/marketplace' },
-    { name: 'Impact', href: '/impact' },
+    { name: 'Why It Matters', href: '/why-it-matters' },
     { name: 'About', href: '/about' },
   ];
 
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b",
         isScrolled 
-          ? "bg-primary-bg/80 backdrop-blur-md border-border-subtle py-3" 
-          : "bg-transparent border-transparent py-5"
+          ? "bg-[#020202]/70 backdrop-blur-xl border-white/5 py-4" 
+          : "bg-transparent border-transparent py-6"
       )}
     >
       <div className="container mx-auto px-6 max-w-7xl flex items-center justify-between">
@@ -49,18 +49,35 @@ export default function Navbar() {
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center space-x-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className={cn(
-                "text-sm font-medium transition-colors hover:text-white",
-                pathname === link.href ? "text-accent-primary" : "text-text-secondary"
-              )}
-            >
-              {link.name}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.name}
+                href={link.href}
+                className={cn(
+                  "relative text-sm font-medium transition-colors py-2 hover:text-white group",
+                  isActive ? "text-white" : "text-text-secondary"
+                )}
+              >
+                {link.name}
+                
+                {/* Active Indicator */}
+                {isActive && (
+                  <motion.div
+                    layoutId="navbar-indicator"
+                    className="absolute bottom-0 left-0 right-0 h-[2px] bg-accent-primary rounded-full"
+                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  />
+                )}
+                
+                {/* Hover Indicator */}
+                {!isActive && (
+                  <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-white/30 rounded-full group-hover:w-full transition-all duration-300" />
+                )}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="hidden md:flex items-center space-x-4">
